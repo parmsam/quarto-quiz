@@ -12,5 +12,6 @@ contributes:
       config:
         quiz:
           checkKey: "c"
-          resetKey: "r"
+          resetKey: "q"
           shuffleKey: "t"
+          allowNumberKeys: true

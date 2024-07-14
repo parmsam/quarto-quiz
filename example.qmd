@@ -4,8 +4,9 @@ format:
   revealjs:
     quiz: 
       checkKey: 'c'
-      resetKey: 'r'
+      resetKey: 'q'
       shuffleKey: 't'
+      allowNumberKeys: true
 revealjs-plugins:
   - quiz
 ---
@@ -18,8 +19,22 @@ revealjs-plugins:
 - Madrid
 
 ::: footer
-By default, you can click "c" on your keyboard to check your answer. Or you can click "r" to reset your answer. 
+Click on one of the options then click the check button. If you got it wrong click reset and try again.
 :::
+
+
+## What is the capital of the USA? {.quiz-question}
+
+- Paris
+- Berlin
+- Madrid
+- [Washington, D.C.]{.correct}
+
+::: footer
+Alternatively, you can select each option using your number keypad. For example, click "2" to select the second option. 
+:::
+
+
 
 ## What is the capital of Spain? {.quiz-question}
 
@@ -28,7 +43,7 @@ By default, you can click "c" on your keyboard to check your answer. Or you can 
 - [Madrid]{.correct}
 
 ::: footer
-Keyboard shortcuts can be changed in the YAML header of your Quarto file.
+You can use the "c" key to check your answer, the "q" key to reset the question, and the "t" key to shuffle the question slides.
 :::
 
 ## What is the capital of Germany? {.quiz-question}
@@ -39,6 +54,6 @@ Keyboard shortcuts can be changed in the YAML header of your Quarto file.
 - London
 
 ::: footer
- See [README.md](README.md) for more info.
+Keyboard shortcuts can be changed in the YAML header of your Quarto file. See [README.md](README.md) for more info.
 :::
 
