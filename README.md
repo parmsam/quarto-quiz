@@ -44,11 +44,12 @@ format:
       checkKey: 'c'
       resetKey: 'r'
       shuffleKey: 't'
+      allowNumberKeys: true
 revealjs-plugins:
   - quiz
 ```
 
-You'll also notice a `resetKey` and `shuffleKey` option. These are the keys to reset the quiz and shuffle the quiz options respectively. By default they're set to 'r' and 't'. You can change these to any key you like.
+You'll also notice a `resetKey` and `shuffleKey` option. These are the keys to reset the quiz and shuffle the quiz options respectively. By default they're set to 'q' and 't'. You can change these to any key you like.
 
 ## Example
 

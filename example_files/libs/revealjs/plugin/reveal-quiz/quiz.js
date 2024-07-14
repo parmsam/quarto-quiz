@@ -68,12 +68,14 @@ window.RevealQuiz = function () {
 
       settings.resetKey = options.resetKey ? options.resetKey.toLowerCase() : "r";
       settings.resetKeyCode = keyCodes[settings.resetKey] || 82;
-
+      
       deck.addKeyBinding({ keyCode: settings.resetKeyCode, key: settings.resetKey }, () => {
         let currentSlide = deck.getCurrentSlide();
         let resetBtn = currentSlide.querySelector('.reset-button');
         resetBtn.click();
       });
+      
+      settings.allowNumberKeys = options.allowNumberKeys || true;
 
       deck.getSlides().forEach((slide, index) => {
         let quizQuestion = slide.classList.contains('quiz-question');
@@ -103,7 +105,7 @@ window.RevealQuiz = function () {
             isAnswered = false;
             cloneFeedbackElement.textContent = '';
           };
-
+          
           options.forEach(option => {
             option.addEventListener('click', function () {
               if (!isAnswered) {
@@ -162,6 +164,23 @@ window.RevealQuiz = function () {
               options.forEach(opt => opt.disabled = true);
             }
           });
+
+          if (settings.allowNumberKeys) {
+            document.addEventListener('keydown', function (event) {
+              // Assuming option buttons have class names like 'option-button' and are meant to be selected in order
+              // const optionButtons = document.querySelectorAll('.option-button');
+
+              // The key values for number keys are '1', '2', '3', etc.
+              // Convert the key to an index (e.g., '1' becomes 0)
+              const index = parseInt(event.key, 10) - 1;
+
+              // Check if the pressed key is a number that corresponds to an option button
+              if (index >= 0 && index < options.length) {
+                // Simulate a click on the corresponding option button
+                options[index].click();
+              }
+            });
+          };
         }
 
       });
