@@ -15,7 +15,7 @@ quarto add parmsam/quiz
 
 Simply add the extension to the list of revealjs plugins like:
 
-``` markdown
+``` yaml
 title: My Presentation
 format:
     quiz: default
@@ -36,7 +36,7 @@ Then use the following syntax within a slide to create a quiz question.
 
 By default, the key to check the quiz question is 'c'. You can change this by setting the `checkKey` option in your YAML header like:
 
-```markdown
+```yaml
 title: "Multiple Choice Quiz Example"
 format:
   revealjs:
