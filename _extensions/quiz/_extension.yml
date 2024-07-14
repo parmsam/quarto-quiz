@@ -1,0 +1,16 @@
+title: Quiz
+author: parmsam
+version: 1.0.0
+quarto-required: ">=1.4.0"
+contributes:
+  revealjs-plugins:
+    - name: RevealQuiz
+      script:
+        - quiz.js
+      stylesheet:
+        - quiz.css
+      config:
+        quiz:
+          checkKey: "c"
+          resetKey: "r"
+          shuffleKey: "t"

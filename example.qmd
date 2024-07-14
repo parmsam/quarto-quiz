@@ -1,0 +1,44 @@
+---
+title: "Multiple Choice Quiz Example"
+format:
+  revealjs:
+    quiz: 
+      checkKey: 'c'
+      resetKey: 'r'
+      shuffleKey: 't'
+revealjs-plugins:
+  - quiz
+---
+
+## What is the capital of France? {.quiz-question}
+
+- London
+- [Paris]{.correct}
+- Berlin
+- Madrid
+
+::: footer
+By default, you can click "c" on your keyboard to check your answer. Or you can click "r" to reset your answer. 
+:::
+
+## What is the capital of Spain? {.quiz-question}
+
+- Paris
+- Berlin
+- [Madrid]{.correct}
+
+::: footer
+Keyboard shortcuts can be changed in the YAML header of your Quarto file.
+:::
+
+## What is the capital of Germany? {.quiz-question}
+
+- Paris
+- [Berlin]{.correct}
+- Madrid
+- London
+
+::: footer
+ See [README.md](README.md) for more info.
+:::
+
