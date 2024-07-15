@@ -7,6 +7,8 @@ format:
       resetKey: 'q'
       shuffleKey: 't'
       allowNumberKeys: true
+      disableOnCheck: false
+      shuffleOptions: true
 revealjs-plugins:
   - quiz
 ---
