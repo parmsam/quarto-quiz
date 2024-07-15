@@ -63,3 +63,6 @@ The `shuffleOptions` option will shuffle the order of the options when the quest
 
 Here is the source code for a minimal example: [example.qmd](example.qmd).
 
+The output of example.qmd is here.
+
+The output of `example.qmd` is [here](https://parmsam.github.io/quarto-quiz/).
