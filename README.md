@@ -18,7 +18,7 @@ Simply add the extension to the list of revealjs plugins like:
 ``` yaml
 title: My Presentation
 format:
-    quiz: default
+    revealjs: default
 revealjs-plugins:
   - quiz
 ```
