@@ -15,7 +15,7 @@ quarto add parmsam/quiz
 
 Simply add the extension to the list of revealjs plugins like:
 
-``` markdown
+``` yaml
 title: My Presentation
 format:
     quiz: default
@@ -23,7 +23,7 @@ revealjs-plugins:
   - quiz
 ```
 
-Then use the following syntax within a slide to create a quiz question.
+Then use the following syntax within a slide to create a quiz question. There will be a button for each option and buttons to check or reset each question.
 
 ``` markdown
 ## Quiz question goes here {.quiz-question}
@@ -34,22 +34,30 @@ Then use the following syntax within a slide to create a quiz question.
 - Option 4
 ```
 
-By default, the key to check the quiz question is 'c'. You can change this by setting the `checkKey` option in your YAML header like:
+By default, the keyboard shortcut to check the quiz question is 'c'. You can change this by setting the `checkKey` option in your YAML header like:
 
-```markdown
+```yaml
 title: "Multiple Choice Quiz Example"
 format:
   revealjs:
     quiz: 
       checkKey: 'c'
-      resetKey: 'r'
+      resetKey: 'q'
       shuffleKey: 't'
       allowNumberKeys: true
+      disableOnCheck: false
+      shuffleOptions: true
 revealjs-plugins:
   - quiz
 ```
 
 You'll also notice a `resetKey` and `shuffleKey` option. These are the keys to reset the quiz and shuffle the quiz options respectively. By default they're set to 'q' and 't'. You can change these to any key you like.
+
+You can also set the `allowNumberKeys` option to `true` to allow users to select an answer by pressing the number key corresponding to the option. For example, if the correct answer is the second option, the user can press '2' to select the correct answer.
+
+The `disableOnCheck` option will disable the quiz question after it has been checked. This means that the user can't change their answer after they've checked it unless they reset the question. This is false by default.
+
+The `shuffleOptions` option will shuffle the order of the options when the question is displayed. This is true by default. You can refresh your browser to reshuffle the options. 
 
 ## Example
 

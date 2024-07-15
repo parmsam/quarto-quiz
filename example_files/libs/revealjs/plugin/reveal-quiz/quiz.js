@@ -14,6 +14,14 @@ window.RevealQuiz = function () {
     backslash: 220, closebracket: 221, singlequote: 222
   };
 
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+  }
+
   return {
     id: "RevealQuiz",
     init: function (deck) {
@@ -77,6 +85,12 @@ window.RevealQuiz = function () {
       
       settings.allowNumberKeys = options.allowNumberKeys || true;
 
+      settings.disableOnCheck = options.disableOnCheck || false;
+
+      settings.shuffleOptions = options.shuffleOptions || false;
+
+      console.log(settings);
+      
       deck.getSlides().forEach((slide, index) => {
         let quizQuestion = slide.classList.contains('quiz-question');
         if (quizQuestion) {
@@ -95,7 +109,14 @@ window.RevealQuiz = function () {
           options.forEach(opt => {
             opt.classList.add('option-button');
           });
-          
+
+          if (settings.shuffleOptions) {
+            options = shuffleArray(Array.from(options));
+            options.forEach(opt => {
+              slide.appendChild(opt);
+            });
+          };
+
           function resetQuiz() {
             options.forEach(opt => {
               opt.classList.remove('selected', 'correct', 'incorrect');
@@ -138,10 +159,10 @@ window.RevealQuiz = function () {
 
           cloneCheckBtn.addEventListener('click', function () {
             console.log("clicked check")
-            console.log(cloneFeedbackElement);
+            // console.log(cloneFeedbackElement);
             if (selectedOption && !isAnswered) {
               isAnswered = true;
-              console.log(selectedOption);
+              // console.log(selectedOption);
               //check if selected option has span and if it has class of correct
               let isCorrect = selectedOption.querySelector('span') && selectedOption.querySelector('span').classList.contains('correct');
               if (isCorrect) {
@@ -150,18 +171,20 @@ window.RevealQuiz = function () {
                 cloneFeedbackElement.style.color = '#27ae60';
               } else {
                 selectedOption.classList.add('incorrect');
-                cloneFeedbackElement.textContent = 'Incorrect. The correct answer is highlighted.';
+                cloneFeedbackElement.textContent = 'Incorrect!';
                 cloneFeedbackElement.style.color = '#c0392b';
-                options.forEach(opt => {
-                  if (opt.getAttribute('data-correct') === 'true') {
-                    opt.classList.add('correct');
-                  }
-                });
               }
-              checkButton.disabled = true;
-              resetButton.disabled = false;
-              nextButton.disabled = false;
-              options.forEach(opt => opt.disabled = true);
+
+              if (settings.disableOnCheck) {
+                checkButton.disabled = true;
+                resetButton.disabled = false;
+                nextButton.disabled = false;
+                options.forEach(opt => opt.disabled = true);
+              } else {
+                isAnswered = false;
+                checkButton.disabled = false;
+                options.forEach(opt => opt.disabled = false);
+              }
             }
           });
 
