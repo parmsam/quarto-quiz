@@ -24,7 +24,6 @@ revealjs-plugins:
 Click on one of the options then click the check button. If you got it wrong click reset and try again.
 :::
 
-
 ## What is the capital of the USA? {.quiz-question}
 
 - Paris
@@ -35,8 +34,6 @@ Click on one of the options then click the check button. If you got it wrong cli
 ::: footer
 Alternatively, you can select each option using your number keypad. For example, click "2" to select the second option. 
 :::
-
-
 
 ## What is the capital of Spain? {.quiz-question}
 
@@ -59,3 +56,22 @@ You can use the "c" key to check your answer, the "q" key to reset the question,
 Keyboard shortcuts can be changed in the YAML header of your Quarto file. See [README.md](README.md) for more info.
 :::
 
+## Python lists {.quiz-question}
+
+What is the value of x[2]?
+```{python}
+#| eval: FALSE
+#| echo: TRUE
+x = [2, 3, 4]
+x[2] = 4
+print(x[2])
+```
+
+- 1
+- 2
+- 3
+- [4]{.correct}
+
+::: footer
+You can also include code or other content prior to the question.
+:::
