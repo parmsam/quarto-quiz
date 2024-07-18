@@ -18,7 +18,7 @@ Simply add the extension to the list of revealjs plugins like:
 ``` yaml
 title: My Presentation
 format:
-    quiz: default
+    revealjs: default
 revealjs-plugins:
   - quiz
 ```
@@ -63,3 +63,4 @@ The `shuffleOptions` option will shuffle the order of the options when the quest
 
 Here is the source code for a minimal example: [example.qmd](example.qmd).
 
+The output of `example.qmd` is [here](https://parmsam.github.io/quarto-quiz/).
