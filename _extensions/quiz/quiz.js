@@ -200,7 +200,10 @@ window.RevealQuiz = function () {
               // Check if the pressed key is a number that corresponds to an option button
               if (index >= 0 && index < options.length) {
                 // Simulate a click on the corresponding option button
-                options[index].click();
+                // only simulate on the current slide
+                let currentSlide = deck.getCurrentSlide();
+                let optionButtons = currentSlide.querySelectorAll('.option-button');
+                optionButtons[index].click();
               }
             });
           };
