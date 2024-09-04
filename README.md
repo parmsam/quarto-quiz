@@ -65,7 +65,7 @@ The `shuffleOptions` option will shuffle the order of the options when the quest
 
 ### Custom explanations for each option
 
-Within a slide, you can use the `data-explanation` attributeto provide an explanation for the each option including the correct answer. This will be displayed when the user checks their answer. For example, here's what a math quiz question might look like:
+Within a slide, you can use the `data-explanation` attribute to provide an explanation for the each option including the correct answer. It is a [data attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes), in case you are wondering why it has a "data-*" prefix. This will be displayed when the user checks their answer. For example, here's what a math quiz question might look like:
 
 ``` markdown
 ## What is the formula for the area of a circle? {.quiz-question}
