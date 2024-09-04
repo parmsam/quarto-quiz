@@ -162,10 +162,14 @@ window.RevealQuiz = function () {
             // console.log(cloneFeedbackElement);
             if (selectedOption && !isAnswered) {
               isAnswered = true;
-              // console.log(selectedOption);
               //check if selected option has span and if it has class of correct
               let isCorrect = selectedOption.querySelector('span') && selectedOption.querySelector('span').classList.contains('correct');
-              let explanation = selectedOption.querySelector('span').getAttribute('data-explanation'); // Get the explanation attribute
+              // check if selected option has and data-explanation attribute
+              let hasExplanation = selectedOption.querySelector('span') && selectedOption.querySelector('span').hasAttribute('data-explanation');
+              let explanation = null;
+              if (hasExplanation) {
+                explanation = selectedOption.querySelector('span').getAttribute('data-explanation');
+              }
               if (isCorrect) {
                 selectedOption.classList.add('correct');
                 cloneFeedbackElement.textContent = explanation || 'Correct!'; // Use explanation if available
