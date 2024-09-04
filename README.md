@@ -1,6 +1,6 @@
 # Quiz Extension For Quarto
 
-Simple RevealJS that allows you to create multiple choice quiz questions in Quarto.
+Simple RevealJS extension that allows you to create multiple choice quiz questions in Quarto.
 
 Here's an example of what this extension looks like: 
 
