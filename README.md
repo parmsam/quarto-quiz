@@ -63,6 +63,19 @@ The `disableOnCheck` option will disable the quiz question after it has been che
 
 The `shuffleOptions` option will shuffle the order of the options when the question is displayed. This is true by default. You can refresh your browser to reshuffle the options. 
 
+### Custom explanations for each option
+
+Within a slide, you can use the `data-explanation` attributeto provide an explanation for the each option including the correct answer. This will be displayed when the user checks their answer. For example, here's what a math quiz question might look like:
+
+``` markdown
+## What is the formula for the area of a circle? {.quiz-question}
+
+- [$πr^2$]{.correct}
+- [$2πr$]{data-explanation="This is the formula for the circumference of a circle."}
+- [$4πr^2$]{data-explanation="This is the formula for the surface area of a sphere."}
+- [$\frac{4}{3}r^3$]{data-explanation="This is the formula for the volume of a sphere."}
+```
+
 ## Example
 
 Here is the source code for a minimal example: [example.qmd](example.qmd).
