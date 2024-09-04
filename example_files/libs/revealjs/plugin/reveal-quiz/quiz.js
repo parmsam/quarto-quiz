@@ -165,13 +165,14 @@ window.RevealQuiz = function () {
               // console.log(selectedOption);
               //check if selected option has span and if it has class of correct
               let isCorrect = selectedOption.querySelector('span') && selectedOption.querySelector('span').classList.contains('correct');
+              let explanation = selectedOption.querySelector('span').getAttribute('data-explanation'); // Get the explanation attribute
               if (isCorrect) {
                 selectedOption.classList.add('correct');
-                cloneFeedbackElement.textContent = 'Correct!';
+                cloneFeedbackElement.textContent = explanation || 'Correct!'; // Use explanation if available
                 cloneFeedbackElement.style.color = '#27ae60';
               } else {
                 selectedOption.classList.add('incorrect');
-                cloneFeedbackElement.textContent = 'Incorrect!';
+                cloneFeedbackElement.textContent = explanation || 'Incorrect!'; // Use explanation if available
                 cloneFeedbackElement.style.color = '#c0392b';
               }
 
