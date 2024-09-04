@@ -79,9 +79,9 @@ You can also include code or other content prior to the question.
 **What is the name of Ross and Carol's son in the TV show *"Friends"?***
 
 - [Jack]{data-explanation="Jack is the name of Monica and Ross's father."}
-- [Joey]{data-explanation="Joey is one of the main characters, played by Matt LeBlanc."}
-- [Ben]{.correct}
-- [Chandler]{data-explanation="Chandler is another main character, played by Matthew Perry."}
+- [Joey]{data-explanation="😲 Joey is one of the main characters, played by Matt LeBlanc."}
+- [Ben]{.correct data-explanation="💯 Correct! Ben is the name of Ross and Carol's son."}
+- [Chandler]{data-explanation="😂 Chandler is another main character, played by Matthew Perry."}
 
 
 ::: footer 
@@ -91,7 +91,7 @@ You can specify an explanation for each option using the `data-explanation` attr
 ## What is the formula for the area of a circle? {.quiz-question}
 
 - [$πr^2$]{.correct}
-- [$2πr$]{data-explanation="This is the formula for the circumference of a circle."}
+- [$2πr$]{data-explanation="🫠 This is the formula for the circumference of a circle."}
 - [$4πr^2$]{data-explanation="This is the formula for the surface area of a sphere."}
 - [$\frac{4}{3}r^3$]{data-explanation="This is the formula for the volume of a sphere."}
 
@@ -101,8 +101,8 @@ You can also include math expressions [using LaTeX](https://quarto.org/docs/visu
 
 ## Which one is Chandler? {.quiz-question}
 
-- [![](https://upload.wikimedia.org/wikipedia/en/d/da/Matt_LeBlanc_as_Joey_Tribbiani.jpg){height=90px}]{data-explanation="This is Joey."}
-- [![](https://upload.wikimedia.org/wikipedia/en/6/66/Matthew_Perry_as_Chandler_Bing.png){width=90px}]{.correct data-explanation="Nicely done! This is Chandler."}
+- [![](https://upload.wikimedia.org/wikipedia/en/d/da/Matt_LeBlanc_as_Joey_Tribbiani.jpg){height=90px}]{data-explanation="😬 This is Joey."}
+- [![](https://upload.wikimedia.org/wikipedia/en/6/66/Matthew_Perry_as_Chandler_Bing.png){width=90px}]{.correct data-explanation="✅ Nicely done! This is Chandler."}
 
 ::: footer
 Or you can try to embed images in the options.
