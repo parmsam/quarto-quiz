@@ -51,6 +51,8 @@ format:
       allowNumberKeys: true
       disableOnCheck: false
       shuffleOptions: true
+      defaultCorrect: "Correct!"
+      defaultIncorrect: "Incorrect!"
 revealjs-plugins:
   - quiz
 ```
@@ -62,6 +64,8 @@ You can also set the `allowNumberKeys` option to `true` to allow users to select
 The `disableOnCheck` option will disable the quiz question after it has been checked. This means that the user can't change their answer after they've checked it unless they reset the question. This is false by default.
 
 The `shuffleOptions` option will shuffle the order of the options when the question is displayed. This is true by default. You can refresh your browser to reshuffle the options. 
+
+The `defaultCorrect` and `defaultIncorrect` options allow you to set the default text for the correct and incorrect explanations. By default, they are set to "Correct!" and "Incorrect!" if you don't define them.
 
 ### Custom explanations for each option
 

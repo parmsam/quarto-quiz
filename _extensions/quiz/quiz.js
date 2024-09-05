@@ -89,6 +89,9 @@ window.RevealQuiz = function () {
 
       settings.shuffleOptions = options.shuffleOptions || false;
 
+      settings.defaultCorrect = options.defaultCorrect || "Correct!";
+      settings.defaultIncorrect = options.defaultIncorrect || "Incorrect!";
+
       console.log(settings);
       
       deck.getSlides().forEach((slide, index) => {
@@ -172,11 +175,11 @@ window.RevealQuiz = function () {
               }
               if (isCorrect) {
                 selectedOption.classList.add('correct');
-                cloneFeedbackElement.textContent = explanation || 'Correct!'; // Use explanation if available
+                cloneFeedbackElement.textContent = explanation || settings.defaultCorrect; // Use explanation if available
                 cloneFeedbackElement.style.color = '#27ae60';
               } else {
                 selectedOption.classList.add('incorrect');
-                cloneFeedbackElement.textContent = explanation || 'Incorrect!'; // Use explanation if available
+                cloneFeedbackElement.textContent = explanation || settings.defaultIncorrect; // Use explanation if available
                 cloneFeedbackElement.style.color = '#c0392b';
               }
 

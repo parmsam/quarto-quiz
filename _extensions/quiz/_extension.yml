@@ -17,3 +17,5 @@ contributes:
           allowNumberKeys: true
           disableOnCheck: false
           shuffleOptions: true
+          defaultCorrect: ""
+          defaultIncorrect: ""
