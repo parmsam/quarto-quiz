@@ -57,7 +57,7 @@ revealjs-plugins:
   - quiz
 ```
 
-You'll also notice a `resetKey` and `shuffleKey` option. These are the keys to reset the quiz and shuffle the quiz questions respectively. By default they're set to 'q' and 't'. You can change these to any key you like.
+You'll also notice a `resetKey` and `shuffleKey` option. These are the keys to reset an individual quiz question and shuffle all the quiz questions respectively. By default they're set to 'q' and 't'. You can change these to any key you like.
 
 You can also set the `allowNumberKeys` option to `true` to allow users to select an answer by pressing the number key corresponding to the option. For example, if the correct answer is the second option, the user can press '2' to select the correct answer.
 
