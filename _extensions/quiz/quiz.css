@@ -1,10 +1,10 @@
-.reveal ul {
+.reveal .quiz-question ul {
     display: block;
     list-style-type: none;
     padding-left: 0;
 }
 
-.reveal li {
+.reveal .quiz-question li {
     margin-bottom: 15px;
 }
 
