@@ -50,9 +50,11 @@ format:
       shuffleKey: 't'
       allowNumberKeys: true
       disableOnCheck: false
+      disableReset: false
       shuffleOptions: true
       defaultCorrect: "Correct!"
       defaultIncorrect: "Incorrect!"
+      includeScore: false
 revealjs-plugins:
   - quiz
 ```
