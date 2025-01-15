@@ -61,11 +61,15 @@ You'll also notice a `resetKey` and `shuffleKey` option. These are the keys to r
 
 You can also set the `allowNumberKeys` option to `true` to allow users to select an answer by pressing the number key corresponding to the option. For example, if the correct answer is the second option, the user can press '2' to select the correct answer.
 
-The `disableOnCheck` option will disable the quiz question after it has been checked. This means that the user can't change their answer after they've checked it unless they reset the question. This is false by default.
+The `disableOnCheck` option will disable the quiz question after it has been checked. This means that the user can't change their answer after they've checked it unless they reset the question. This is false by default. 
+
+The `disableOnReset` options will disable the quiz question reset button across all questions. This means the user can't reset the question after they've checked it. This is false by default. Note that they can still check other questions if the `disableOnCheck` option is false. It can be used along with `disableOnCheck` to prevent the user from changing their answer after they've checked it (unless they refresh their browser page to reset all questions). 
 
 The `shuffleOptions` option will shuffle the order of the options when the question is displayed. This is true by default. You can refresh your browser to reshuffle the options. 
 
 The `defaultCorrect` and `defaultIncorrect` options allow you to set the default text for the correct and incorrect explanations. By default, they are set to "Correct!" and "Incorrect!" if you don't define them.
+
+The `includeScore` option will include a score in the middle bottom of each slide. It wil be formatted as "A% Correct (X/Y)" where A is the percentage of correct answers and X and Y are the number of correct and total questions respectively. Note that this option will disable the reset button after an answer check to ensure the running score is accurate. The check button will still be enabled. This is false by default. 
 
 ### Custom explanations for each option
 
