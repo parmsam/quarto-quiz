@@ -91,6 +91,7 @@ window.RevealQuiz = function () {
       settings.allowNumberKeys = options.allowNumberKeys || true;
 
       settings.disableOnCheck = options.disableOnCheck || false;
+      settings.disableReset = options.disableReset || false;
 
       settings.shuffleOptions = options.shuffleOptions || false;
 
@@ -98,7 +99,8 @@ window.RevealQuiz = function () {
       settings.defaultIncorrect = options.defaultIncorrect || "Incorrect!";
 
       settings.includeScore = options.includeScore || false;
-
+      
+      
       console.log(settings);
 
       let correctCount = 0;
@@ -150,10 +152,13 @@ window.RevealQuiz = function () {
               }
             });
           });
-          cloneResetBtn.addEventListener('click', () => {
-            console.log("clicked reset");
-            resetQuiz();
-          });
+          if (!settings.disableReset) {
+            cloneResetBtn.addEventListener('click', () => {
+              console.log("clicked reset");
+              cloneCheckBtn.disabled = false;
+              resetQuiz();
+            });
+          }
           clonePrevBtn.addEventListener('click', () => {
             console.log("clicked prev slide")
             deck.prev();
@@ -211,14 +216,22 @@ window.RevealQuiz = function () {
               }
 
               if (settings.disableOnCheck) {
-                checkButton.disabled = true;
-                resetButton.disabled = false;
-                nextButton.disabled = false;
+                cloneCheckBtn.disabled = true;
+                cloneResetBtn.disabled = false;
+                cloneNextBtn.disabled = false;
                 options.forEach(opt => opt.disabled = true);
               } else {
                 isAnswered = false;
-                checkButton.disabled = false;
+                cloneCheckBtn.disabled = false;
                 options.forEach(opt => opt.disabled = false);
+              }
+
+              if(settings.disableReset){
+                cloneResetBtn.disabled = true;
+              }
+            
+              if (settings.includeScore){
+                cloneResetBtn.disabled = true;
               }
             }
           });
