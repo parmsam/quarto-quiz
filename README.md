@@ -38,7 +38,11 @@ Then use the following syntax within a slide to create a quiz question. There wi
 - Option 4
 ```
 
-By default, the keyboard shortcut to check the quiz question is 'c'. You can change this by setting the `checkKey` option in your YAML header like:
+## Advanced usage
+
+You can customize the behavior of the quiz extension by setting options in the YAML header of your document. The default options are captured in [_extensions.yml](_extensions/quiz/_extension.yml).
+
+Here's an example of what that might look like:
 
 ```yaml
 title: "Multiple Choice Quiz Example"
@@ -58,6 +62,11 @@ format:
 revealjs-plugins:
   - quiz
 ```
+
+### Shortcut to check a question
+
+By default, the keyboard shortcut to check the quiz question is 'c'. You can change this by setting the `checkKey` option in your YAML header like:
+
 ### Shortcuts to reset a question and shuffle question order
 
 You'll also notice a `resetKey` and `shuffleKey` option. These are the keys to reset an individual quiz question and shuffle all the quiz questions (as represented by slides) respectively. By default they're set to 'q' and 't'. You can change these to any key you like.
