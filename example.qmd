@@ -9,6 +9,7 @@ format:
       allowNumberKeys: true
       disableOnCheck: false
       shuffleOptions: true
+      includeScore: true
 revealjs-plugins:
   - quiz
 ---

@@ -95,3 +95,12 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.score {
+    position: absolute;
+    color: #238636;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+}

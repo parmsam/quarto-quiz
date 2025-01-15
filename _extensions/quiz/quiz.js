@@ -22,6 +22,11 @@ window.RevealQuiz = function () {
     return array;
   }
 
+  function updateScore(deck, scoreElement, correctCount, totalCount) {
+    const percentage = ((correctCount / totalCount) * 100).toFixed(0);
+    scoreElement.textContent = `${percentage}% Correct (${correctCount}/${totalCount})`;
+  }
+
   return {
     id: "RevealQuiz",
     init: function (deck) {
@@ -92,7 +97,12 @@ window.RevealQuiz = function () {
       settings.defaultCorrect = options.defaultCorrect || "Correct!";
       settings.defaultIncorrect = options.defaultIncorrect || "Incorrect!";
 
+      settings.includeScore = options.includeScore || false;
+
       console.log(settings);
+
+      let correctCount = 0;
+      let totalCount = deck.getSlides().filter(slide => slide.classList.contains('quiz-question')).length;
       
       deck.getSlides().forEach((slide, index) => {
         let quizQuestion = slide.classList.contains('quiz-question');
@@ -160,6 +170,13 @@ window.RevealQuiz = function () {
 
           slide.appendChild(cloneFeedbackElement);
 
+          if (settings.includeScore) {
+            let scoreElement = document.createElement('div');
+            scoreElement.classList.add('score');
+            slide.appendChild(scoreElement);
+            updateScore(deck, scoreElement, correctCount, totalCount);
+          }
+
           cloneCheckBtn.addEventListener('click', function () {
             console.log("clicked check")
             // console.log(cloneFeedbackElement);
@@ -177,10 +194,20 @@ window.RevealQuiz = function () {
                 selectedOption.classList.add('correct');
                 cloneFeedbackElement.textContent = explanation || settings.defaultCorrect; // Use explanation if available
                 cloneFeedbackElement.style.color = '#27ae60';
+                correctCount++;
               } else {
                 selectedOption.classList.add('incorrect');
                 cloneFeedbackElement.textContent = explanation || settings.defaultIncorrect; // Use explanation if available
                 cloneFeedbackElement.style.color = '#c0392b';
+              }
+
+              if (settings.includeScore) {
+                deck.getSlides().forEach(slide => {
+                  let scoreElement = slide.querySelector('.score');
+                  if (scoreElement) {
+                    updateScore(deck, scoreElement, correctCount, totalCount);
+                  }
+                });
               }
 
               if (settings.disableOnCheck) {
@@ -222,4 +249,3 @@ window.RevealQuiz = function () {
     },
   };
 };
-

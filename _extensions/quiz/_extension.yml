@@ -19,3 +19,4 @@ contributes:
           shuffleOptions: true
           defaultCorrect: ""
           defaultIncorrect: ""
+          includeScore: false
