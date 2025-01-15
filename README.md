@@ -71,6 +71,8 @@ The `shuffleOptions` option will shuffle the order of the options when the quest
 
 The `defaultCorrect` and `defaultIncorrect` options allow you to set the default text for the correct and incorrect explanations. By default, they are set to "Correct!" and "Incorrect!" if you don't define them.
 
+### Including current score in each slide
+
 The `includeScore` option will include a score in the middle bottom of each slide. It wil; be formatted as "A% Correct (X/Y)" where A is the percentage of correct answers and X and Y are the number of correct and total questions respectively. Note that this option will disable the reset button after an answer check to ensure the running score is accurate. The check button will still be enabled, unless you use `disableOnCheck`. This is false by default. 
 
 ### Custom explanations for each option
