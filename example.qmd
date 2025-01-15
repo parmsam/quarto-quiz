@@ -8,6 +8,7 @@ format:
       shuffleKey: 't'
       allowNumberKeys: true
       disableOnCheck: false
+      disableReset: false
       shuffleOptions: true
       includeScore: true
 revealjs-plugins:
@@ -60,13 +61,13 @@ Keyboard shortcuts can be changed in the YAML header of your Quarto file. See [R
 ## Python lists {.quiz-question}
 
 What is the value of x[2]?
-```{python}
+<!-- ```{python}
 #| eval: FALSE
 #| echo: TRUE
 x = [2, 3, 4]
 x[2] = 4
 print(x[2])
-```
+``` -->
 
 - 2
 - 3

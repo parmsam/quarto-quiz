@@ -20,3 +20,4 @@ contributes:
           defaultCorrect: ""
           defaultIncorrect: ""
           includeScore: false
+          disableReset: false
