@@ -10,7 +10,7 @@ format:
       disableOnCheck: false
       disableReset: false
       shuffleOptions: true
-      includeScore: true
+      includeScore: false
 revealjs-plugins:
   - quiz
 ---
