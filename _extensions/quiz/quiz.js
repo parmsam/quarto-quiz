@@ -116,8 +116,9 @@ window.RevealQuiz = function () {
           let cloneFeedbackElement = feedbackElement.cloneNode(true);
           let cloneButtonContainer = buttonContainer.cloneNode(true);
 
-          let selectedOption = null;
+          let selectedOptions = [];
           let isAnswered = false;
+          let isMultipleChoice = slide.classList.contains('quiz-multiple');
 
           // ensure each list element has a class of 'option-button'
           let options = slide.querySelectorAll('li');
@@ -137,7 +138,7 @@ window.RevealQuiz = function () {
               opt.classList.remove('selected', 'correct', 'incorrect');
               opt.disabled = false;
             });
-            selectedOption = null;
+            selectedOptions = [];
             isAnswered = false;
             cloneFeedbackElement.textContent = '';
           };
@@ -145,10 +146,22 @@ window.RevealQuiz = function () {
           options.forEach(option => {
             option.addEventListener('click', function () {
               if (!isAnswered) {
-                options.forEach(opt => opt.classList.remove('selected'));
-                this.classList.add('selected');
-                selectedOption = this;
-                checkButton.disabled = false;
+                if (isMultipleChoice) {
+                  // Multiple choice: toggle selection
+                  if (this.classList.contains('selected')) {
+                    this.classList.remove('selected');
+                    selectedOptions = selectedOptions.filter(opt => opt !== this);
+                  } else {
+                    this.classList.add('selected');
+                    selectedOptions.push(this);
+                  }
+                } else {
+                  // Single choice: only one selection allowed
+                  options.forEach(opt => opt.classList.remove('selected'));
+                  this.classList.add('selected');
+                  selectedOptions = [this];
+                }
+                checkButton.disabled = selectedOptions.length === 0;
               }
             });
           });
@@ -184,26 +197,60 @@ window.RevealQuiz = function () {
 
           cloneCheckBtn.addEventListener('click', function () {
             console.log("clicked check")
-            // console.log(cloneFeedbackElement);
-            if (selectedOption && !isAnswered) {
+            if (selectedOptions.length > 0 && !isAnswered) {
               isAnswered = true;
-              //check if selected option has span and if it has class of correct
-              let isCorrect = selectedOption.querySelector('span') && selectedOption.querySelector('span').classList.contains('correct');
-              // check if selected option has and data-explanation attribute
-              let hasExplanation = selectedOption.querySelector('span') && selectedOption.querySelector('span').hasAttribute('data-explanation');
-              let explanation = null;
-              if (hasExplanation) {
-                explanation = selectedOption.querySelector('span').getAttribute('data-explanation');
-              }
-              if (isCorrect) {
-                selectedOption.classList.add('correct');
-                cloneFeedbackElement.textContent = explanation || settings.defaultCorrect; // Use explanation if available
-                cloneFeedbackElement.style.color = '#27ae60';
-                correctCount++;
+              
+              if (isMultipleChoice) {
+                // Multiple choice logic: check if ALL correct answers are selected AND no incorrect answers
+                let correctOptions = Array.from(options).filter(opt => 
+                  opt.querySelector('span') && opt.querySelector('span').classList.contains('correct')
+                );
+                
+                let selectedCorrect = selectedOptions.filter(opt => 
+                  opt.querySelector('span') && opt.querySelector('span').classList.contains('correct')
+                );
+                let selectedIncorrect = selectedOptions.filter(opt => 
+                  !(opt.querySelector('span') && opt.querySelector('span').classList.contains('correct'))
+                );
+                
+                let isFullyCorrect = selectedCorrect.length === correctOptions.length && selectedIncorrect.length === 0;
+                
+                // Mark all options as correct or incorrect
+                options.forEach(opt => {
+                  if (opt.querySelector('span') && opt.querySelector('span').classList.contains('correct')) {
+                    opt.classList.add('correct');
+                  } else {
+                    opt.classList.add('incorrect');
+                  }
+                });
+                
+                if (isFullyCorrect) {
+                  cloneFeedbackElement.textContent = settings.defaultCorrect || "Correct! You selected all the right answers.";
+                  cloneFeedbackElement.style.color = '#27ae60';
+                  correctCount++;
+                } else {
+                  cloneFeedbackElement.textContent = settings.defaultIncorrect || "Incorrect! You need to select ALL correct answers and NO incorrect ones.";
+                  cloneFeedbackElement.style.color = '#c0392b';
+                }
               } else {
-                selectedOption.classList.add('incorrect');
-                cloneFeedbackElement.textContent = explanation || settings.defaultIncorrect; // Use explanation if available
-                cloneFeedbackElement.style.color = '#c0392b';
+                // Single choice logic (original)
+                let selectedOption = selectedOptions[0];
+                let isCorrect = selectedOption.querySelector('span') && selectedOption.querySelector('span').classList.contains('correct');
+                let hasExplanation = selectedOption.querySelector('span') && selectedOption.querySelector('span').hasAttribute('data-explanation');
+                let explanation = null;
+                if (hasExplanation) {
+                  explanation = selectedOption.querySelector('span').getAttribute('data-explanation');
+                }
+                if (isCorrect) {
+                  selectedOption.classList.add('correct');
+                  cloneFeedbackElement.textContent = explanation || settings.defaultCorrect;
+                  cloneFeedbackElement.style.color = '#27ae60';
+                  correctCount++;
+                } else {
+                  selectedOption.classList.add('incorrect');
+                  cloneFeedbackElement.textContent = explanation || settings.defaultIncorrect;
+                  cloneFeedbackElement.style.color = '#c0392b';
+                }
               }
 
               if (settings.includeScore) {

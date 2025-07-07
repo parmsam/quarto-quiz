@@ -109,3 +109,14 @@ You can also include math expressions [using LaTeX](https://quarto.org/docs/visu
 ::: footer
 Or you can try to embed images in the options.
 :::
+
+## Which of the following are programming languages? {.quiz-question .quiz-multiple}
+
+- [Python]{.correct}
+- [JavaScript]{.correct}
+- [HTML]{data-explanation="HTML is a markup language, not a programming language."}
+- [CSS]{data-explanation="CSS is a style sheet language, not a programming language."}
+
+::: footer
+You can create multiple-choice questions by adding the `quiz-multiple` class to the question. Select ALL correct answers to get it right!
+:::

@@ -104,3 +104,22 @@
     transform: translateX(-50%);
     z-index: 1001;
 }
+
+/* Multiple choice questions styling */
+.quiz-multiple .option-button.selected {
+    background-color: #3498db;
+    border: 3px solid #2980b9;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.quiz-multiple .option-button.selected:hover {
+    background-color: #2980b9;
+}
+
+/* Show a checkmark for selected options in multiple choice */
+.quiz-multiple .option-button.selected::after {
+    content: " ✓";
+    color: white;
+    font-weight: bold;
+    float: right;
+}

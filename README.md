@@ -89,6 +89,25 @@ The `shuffleOptions` option will shuffle the order of the options when the quest
 
 The `defaultCorrect` and `defaultIncorrect` options allow you to set the default text for the correct and incorrect explanations. By default, they are set to "Correct!" and "Incorrect!" if you don't define them.
 
+### Multiple-choice questions (select all that apply)
+
+You can create questions that require multiple correct answers to be selected by adding the `quiz-multiple` class along with `quiz-question`. For these questions, users must select ALL correct answers and NO incorrect answers to get the question right.
+
+``` markdown
+## Which of the following are programming languages? {.quiz-question .quiz-multiple}
+
+- [Python]{.correct}
+- [JavaScript]{.correct}
+- [HTML]{data-explanation="HTML is a markup language, not a programming language."}
+- [CSS]{data-explanation="CSS is a style sheet language, not a programming language."}
+```
+
+In multiple-choice questions:
+- Users can select multiple options by clicking on them
+- Selected options will show a checkmark (✓) to indicate they are selected
+- Clicking a selected option will deselect it
+- The question is only correct if ALL options marked with `.correct` are selected AND no incorrect options are selected
+
 ### Custom explanations for each option
 
 Within a slide, you can use the `data-explanation` attribute to provide an explanation for the each option including the correct answer. It is a [data attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes), in case you are wondering why it has a "data-*" prefix. This will be displayed when the user checks their answer. For example, here's what a math quiz question might look like:
